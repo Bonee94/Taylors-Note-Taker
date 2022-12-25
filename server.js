@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const api = require('./routes/notes');
 const html = require('./routes/index')
 const clog = require('./middleware/clog');
 
@@ -14,7 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
-//app.use('/api', api);
 app.use('/', html);
 
 
