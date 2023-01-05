@@ -1,14 +1,22 @@
 const express = require("express");
-const dbNotes = require("./db.json");
 const uuid = require("../helpers/uuid");
 const fs = require("fs");
 
 const app = express();
 
-app.get("/", (req, res) => res.json(dbNotes));
+app.get("/", (req, res) => {
+  fs.readFile('./db/db.json', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json("Error in posting note.");
+    } else {
+    res.json(JSON.parse(data))}})
+  });
 
 app.post("/", (req, res) => {
   const { title, text } = req.body;
+  const dbNotes = require("./db.json");
+
 
   // Variable for the object we will save
   const newNote = {
