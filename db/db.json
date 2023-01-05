@@ -3,5 +3,15 @@
       "title": "Test Title",
       "text": "Test text",
       "id": "test id"
+   },
+   {
+      "title": "New Note",
+      "text": "This is a new test note.",
+      "id": "2dfa"
+   },
+   {
+      "title": "Another Note",
+      "text": "New one again.",
+      "id": "0369"
    }
 ]
