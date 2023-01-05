@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const html = require('./routes/index')
+const html = require('./routes/index');
 
 const clog = require('./middleware/clog');
 
