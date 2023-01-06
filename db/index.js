@@ -40,7 +40,7 @@ app.post("/", (req, res) => {
       // Add a new note
       parsedNotes.push(newNote);
 
-      //Write the new notes back to the file
+      //Write the new notes back to the db file
       fs.writeFile(
         "./db/db.json",
         JSON.stringify(parsedNotes, null, 3),
@@ -66,6 +66,7 @@ app.delete("/", (req, res) => {
 
   const idToRemove = req.query.delete_id;
 
+  // Reads the notes db 
   fs.readFile("./db/db.json", (err, data) => {
     if (err) {
       console.error(err);
@@ -73,11 +74,12 @@ app.delete("/", (req, res) => {
     } else {
       const parsedNotes = JSON.parse(data);
 
+      // This goes through each note and stores the ones that don't match the idToRemove var id 
       const filteredNotes = parsedNotes.filter(
         (note) => note.id !== idToRemove
       );
 
-      //Write the new notes back to the file
+      //Write the notes back to the file minus the one that was meant to be deleted
       fs.writeFile(
         "./db/db.json",
         JSON.stringify(filteredNotes, null, 3),
